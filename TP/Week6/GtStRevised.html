@@ -1,0 +1,65 @@
+<div>
+    <canvas id="myChart"></canvas>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <script>
+    const ctx = document.getElementById('myChart');
+  
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        //labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+          label: 'Finance Data',
+          data: [
+            {x: 'Monday',
+            finance:{
+                cost: 1500, revenue: 2000, profit: 500}
+            },
+            {x: 'Tuesday',
+            finance:{
+                cost: 1700, revenue: 2300, profit: 600}
+            },
+            {x: 'Wednesday',
+            finance:{
+                cost: 1600, revenue: 2600, profit: 1000}
+            },
+            {x: 'Thursday',
+            finance:{
+                cost: 1800, revenue: 2400, profit: 600}
+            },
+            {x: 'Friday',
+            finance:{
+                cost: 1900, revenue: 3000, profit: 1100}
+            },
+            {x: 'Saturday',
+            finance:{
+                cost: 2000, revenue: 3200, profit: 1200}
+            },
+            {x: 'Sunday',
+            finance:{
+                cost: 2100, revenue: 3400, profit: 1300}
+            }
+
+
+        ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        parsing:{
+            xAxisKey: 'x',
+            yAxisKey: 'finance.cost'
+        },
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+
+
