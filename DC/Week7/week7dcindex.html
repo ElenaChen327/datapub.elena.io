@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Leaflet Map</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Home Sweet Home - Chengdu, China</h1>
+    <div id="map"></div>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map and set view to Chengdu, China
+        var map = L.map('map').setView([30.572815, 104.066801], 13); // Chengdu coordinates
+
+        // Load and display tile layers on the map
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Add a marker at the Tianfu Square location with a popup
+        var marker = L.marker([30.572815, 104.066801]).addTo(map)
+            .bindPopup('<b>Tianfu Square</b><br>A central landmark in Chengdu.');
+
+        // Add a circle to highlight the Chenghua district
+        var circle = L.circle([30.676292, 104.130104], {
+            color: 'blue',
+            fillColor: '#30f',
+            fillOpacity: 0.5,
+            radius: 3000
+        }).addTo(map).bindPopup('Chenghua District');
+
+        // Add a polygon to show a highlighted region
+        var polygon = L.polygon([
+            [30.676292, 104.130104],
+            [30.679292, 104.133104],
+            [30.682292, 104.130104]
+        ], {
+            color: 'green',
+            fillColor: '#0f0',
+            fillOpacity: 0.3
+        }).addTo(map).bindPopup('Polygon Area');
+
+    </script>
+</body>
+</html>
